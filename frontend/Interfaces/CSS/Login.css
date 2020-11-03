@@ -1,0 +1,54 @@
+body{
+    background-image: url(../Imagens/fundo.jpeg);
+}
+.cabecalho{
+    width: 100%;
+    float: left;
+    padding: 1% 1%;
+}
+.logo{
+    width: 15%;
+    height: 15%;
+    padding: 0%;
+    margin: 0 auto;
+}
+a img{
+    width: 80px;
+    margin: 7px;
+}
+a i{
+    opacity: 1;
+}
+a i:hover{
+    opacity: 1;
+}
+li{
+    font-family: 'Roboto', sans-serif;
+    font-size: 150%;
+}
+.titulo{
+    width: 80%;
+    margin-right: auto;
+    margin-left: auto;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+fieldset{
+    background-color:white;
+    width: 45%;
+    margin: 13% auto;
+    border: none;
+    display: flex;
+    flex-direction: column;
+}
+.row{
+    display: flex;
+    justify-content: center;
+}
+@media(max-width: 1040px){
+    fieldset{
+        width: 470px;
+    }
+}
+

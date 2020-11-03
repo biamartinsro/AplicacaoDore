@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="./Imagens/Dore-icone.png" type="image/x-icon">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="./CSS/materialize.min.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="./CSS/Contato.css">
+        <title>Contato</title>
+    </head>
+    <body>
+        <header>
+            <nav class="teal z-depth-0">
+                <div class="nav-wrapper teal container">
+                    <a href="../Interfaces/Principal.html" class="brand-logo"><img src="./Imagens/Dore.png" alt=""></a>
+                    <a class="modal-trigger" href="#sair"><i class="material-icons right">exit_to_app</i></a>
+                    <ul id="nav-mobile" class="right hide-on-med-and-down">
+                        <li><a href="../Interfaces/Principal.html">Home</a></li>
+                        <li><a href="./Sobre.html">Sobre</a></li>
+                        <li><a href="./Contato.html">Contatos</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+    
+        <div id="sair" class="modal">
+            <div class="modal-content">
+                <div class="container center">
+                    <p class="confirmar">Tem certeza que deseja sair?</p>
+                    <button class="btn waves-effect waves-light" type="submit" name="action">Sim
+                        <i class="material-icons right">check</i>
+                    </button>
+                    <button class="btn waves-effect waves-light" type="submit" name="action">Não
+                        <i class="material-icons right">cancel</i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <h1>Contato</h1>
+        <div class="row center">
+        <div class="col s12">
+
+        <ul class="collapsible">
+            <li>
+              <div class="collapsible-header"><i class="material-icons">location_on</i>	
+                Indústria Sidore | Parnamirim/RN</div>
+              <div class="collapsible-body">+55 84 3311-0906
+                  <p>
+                                            +55 84 9152-9189 </p>
+                                            BR-304 - Nova Parnamirim, Parnamirim - RN, 59150-010 /
+                                            Horário de funcionamento das 8:00h às 18:00h
+              </span></div>
+            </li>
+            <li>
+              <div class="collapsible-header"><i class="material-icons">mail_outline</i> Email</div>
+              <div class="collapsible-body"><span>contato@dore.com.br
+                                                <p> sac@dore.com.br </p>
+            </span></div>
+            </li>
+            <li>
+              <div class="collapsible-header"><i class="material-icons">touch_app</i>Social</div>
+              <div class="collapsible-body"><span>
+                <a href="https://www.facebook.com/doreoficialbr/"><img src="./Imagens/facebook.ico" alt="" class="circle responsive-img"></a>
+                <a href="https://www.instagram.com/doreoficialbr/"><img src="./Imagens/instagram.ico" alt="" class="circle responsive-img"></a>
+                <a href="https://www.youtube.com/channel/UCHaLLHvCjzQ9WXClh6_Pe2g"><img src="./Imagens/youtubr.ico" alt="" class="circle responsive-img"></a>
+                <a href="Coloque aqui o link para o grupo no whatsapp"><img src="./Imagens/whatsapp.ico" alt=""></a>
+            </div>
+            </li>
+          </ul>
+                
+        </div></div>
+
+        <script src="./JS/jquery-3.5.1.min.js"></script>
+        <script src="./JS/materialize.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $('.modal').modal();
+            });
+        $(document).ready(function(){
+        $('.collapsible').collapsible();
+        });
+        </script>
+                
+        <footer>
+            <blockquote>Dore Refrigerantes ©</blockquote>
+        </footer>
+</body>
+</html>

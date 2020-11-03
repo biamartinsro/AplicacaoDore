@@ -1,0 +1,61 @@
+a img{
+    width: 80px;
+    margin: 7px;
+}
+a i{
+    opacity: 0.9;
+}
+a i:hover{
+    opacity: 1;
+}
+h1, h2{
+    width: 80%;
+    margin-right: auto;
+    margin-left: auto;
+    display: flex;
+    justify-content: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: 200%;
+}
+.confirmar{
+    font-family: 'Roboto', sans-serif; 
+    font-size: 200%;
+}
+.confirmar{
+    font-family: 'Roboto', sans-serif; 
+    font-size: 200%;
+}
+h2{
+    font-size: 170%;
+}
+.botao{
+    width: 8%;
+    margin: 10% auto;
+}
+.escolha{
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.etapa{
+    width: 100%;
+    margin-top: 1%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.botao{
+    width: 8%;
+    margin: 1% auto;
+}
+footer{
+    position: fixed;
+    top: 90%;
+}
+blockquote{
+    border-left: 5px solid teal;
+    font-family: 'Roboto', sans-serif;
+}

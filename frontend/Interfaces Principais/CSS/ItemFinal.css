@@ -1,0 +1,36 @@
+a img{
+    width: 80px;
+    margin: 7px;
+}
+a i{
+    opacity: 0.9;
+}
+a i:hover{
+    opacity: 1;
+}
+h1, h2{
+    width: 80%;
+    margin-right: auto;
+    margin-left: auto;
+    display: flex;
+    justify-content: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: 200%;
+}
+.confirmar{
+    font-family:'Roboto', sans-serif;
+    font-size: 200%;
+}
+.fixarRodape {
+    bottom: 0;
+    position: fixed;
+    width: 90%;
+    text-align: left;
+}
+a{
+    color: inherit;
+}
+blockquote{
+    border-left: 5px solid teal;
+    font-family: 'Roboto', sans-serif;
+}

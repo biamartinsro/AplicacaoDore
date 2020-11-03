@@ -1,0 +1,20 @@
+a img{
+    width: 80px;
+    margin: 7px;
+}
+a i{
+    opacity: 0.9;
+}
+a i:hover{
+    opacity: 1;
+}
+p{
+    font-family: 'Roboto', sans-serif; 
+    font-size: 200%;
+}
+blockquote{
+    border-left: 5px solid teal;
+}
+.quadro-informacoes{
+    margin-top: 1%;
+}

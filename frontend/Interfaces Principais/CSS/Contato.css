@@ -1,0 +1,41 @@
+a img{
+    width: 80px;
+    margin: 7px;
+}
+a i{
+    opacity: 0.9;
+}
+a i:hover{
+    opacity: 1;
+}
+h1, h2{
+    width: 80%;
+    margin-right: auto;
+    margin-left: auto;
+    display: flex;
+    justify-content: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: 200%;
+}
+.row{
+    display: flex;
+    white-space: nowrap;
+    justify-content: center;
+}
+.confirmar{
+    font-family:'Roboto', sans-serif;
+    font-size: 200%;
+}
+.a{
+    color: inherit;
+}
+blockquote{
+    border-left: 5px solid teal;
+}
+footer{
+    position: fixed;
+    top: 90%;
+}
+i{
+
+}
