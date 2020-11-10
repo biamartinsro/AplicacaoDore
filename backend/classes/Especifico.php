@@ -42,7 +42,7 @@ class Especifico {
 
     public function lista(){
         try {
-            $sql  = "SELECT C.idespecifico, C.noespecifico, F.nosubmodulo AS 'Submodulo' 
+            $sql  = "SELECT C.idespecifico AS 'IdEspecifico', C.noespecifico AS 'NoEspecifico', F.nosubmodulo AS 'Submodulo' 
 FROM tbespecifico AS C
 INNER JOIN tbsubmodulo AS F ON C.idsubmodulo = F.idsubmodulo";
             $conn = ConexaoBD::conecta();
@@ -61,40 +61,20 @@ INNER JOIN tbsubmodulo AS F ON C.idsubmodulo = F.idsubmodulo";
         }     
     }
     
-    public function consulta($idespecifico){
-        try {
-            $sql  = "SELECT C.idespecifico, C.noespecifico, F.nosubmodulo AS 'Submodulo' 
-FROM tbespecifico AS C
-INNER JOIN tbsubmodulo AS F ON C.idsubmodulo = F.idsubmodulo WHERE idespecifico = ".$idespecifico." ORDER BY noespecifico";
-            $conn = ConexaoBD::conecta();
-            $sql  = $conn->query($sql);
-
-            $res = array();  
-            while($row = $sql->fetch(PDO::FETCH_OBJ)) {
-               $especifico = new Especifico();               
-                $especifico->setIdespecifico($row->IdEspecifico);
-                $especifico->setNoespecifico($row->NoEspecifico);
-                $especifico->setSubmodulo($row->Submodulo);
-                $res[] = $especifico;
-            }
-            return $res;
-        } catch (Exception $e) {
-             return "ERRO: ".$e->getMessage()."<br><br>";
-        }     
-    }
+   
     
-    public function altera($noespecifico,$submodulo, $codigo){
+    public function altera($noitemfinal,$especifico, $codigo){
         try {
-            $sql = "UPDATE Tbespecifico
-                       SET NoEspecifico = ?,
-                       SET IdSubmodulo = ?
+            $sql = "UPDATE Tbitemfinal
+                       SET NoItemFinal = ?,
+                       SET IdEspecifico = ?
                        
-                     WHERE Idespecifico = ?"; 
+                     WHERE IdItemFinal = ?"; 
             $conn = ConexaoBD::conecta();
 
             $stm = $conn->prepare($sql);
-            $stm->bindParam(1, $noespecifico);
-            $stm->bindParam(2, $idsubmodulo);
+            $stm->bindParam(1, $noitemfinal);
+            $stm->bindParam(2, $especifico);
             $stm->bindParam(3, $codigo);
             $stm->execute();
             return 1; 

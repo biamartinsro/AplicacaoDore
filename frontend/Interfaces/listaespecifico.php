@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+<?php  include('../../backend/classes/Especifico.php'); ?>
+
 <html lang="pt-br">
 
 <head>
@@ -8,21 +9,21 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="shortcut icon" href="../Interfaces de Cadastro/Imagens/Dore-icone.png" type="image/x-icon">
-    <title>Lista de específicos</title>
-    <link rel="stylesheet" href="./CSS/Listas.css">
+    <title>Lista de usuários</title>
+    <link rel="stylesheet" href="CSS/Listas.css">
 </head>
 
 <body>
 
     <nav class="nav-extended teal z-depth-0">
         <div class="nav-wrapper teal container">
-            <a href="./Principal.html" class="brand-logo"><img src="../Interfaces de Cadastro/Imagens/Dore.png"
+            <a href="PrincipalGeral.php" class="brand-logo"><img src="../Interfaces de Cadastro/Imagens/Dore.png"
                     alt=""></a>
-            <a class="modal-trigger" href="#sair"><i class="material-icons right">exit_to_app</i></a>
+                    <a class="modal-trigger" href="#sair"><i class="material-icons right">exit_to_app</i></a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="Principal.html">Home</a></li>
-                <li><a href="../Interfaces Principais/Sobre.html">Sobre</a></li>
-                <li><a href="../Interfaces Principais/Contato.html">Contatos</a></li>
+                <li><a href="PrincipalGeral.php">Home</a></li>
+                <li><a href="../Interfaces Principais/Sobre.php">Sobre</a></li>
+                <li><a href="../Interfaces Principais/Contato.php">Contatos</a></li>
             </ul>
         </div>
 
@@ -31,18 +32,19 @@
         <div class="row">
             <div class="nav-content col s12">
                 <ul class="tabs tabs-transparent col s11 offset-s1">
-                    <li class="tab"><a href="listaUsuários.html">Usuários</a></li>
-                    <li class="tab"><a href="listaModulos.html">Módulos</a></li>
-                    <li class="tab"><a href="listaSubmodulos.html">Submódulos</a></li>
-                    <li class="tab active"><a href="listaEspecificos.html">Específicos</a></li>
-                    <li class="tab"><a href="listaItensFinais.html">Itens finais</a></li>
-                    <li class="tab"><a href="listaProblemas.html">Problemas</a></li>
-                    <li class="tab"><a href="listaSolucoes.html">Soluções</a></li>
-                    <li class="tab"><a href="listaSetor-Informacoes.html">Setores e Informações</a></li>
+                    <li class="tab"><a href="listausuario.php">Usuários</a></li>
+                    <li class="tab"><a href="listamodulos.php">Módulos</a></li>
+                    <li class="tab"><a href="listasubmodulos.php">Submódulos</a></li>
+                    <li class="tab active"><a href="listaespecifico.php">Específicos</a></li>
+                    <li class="tab"><a href="listaitemfinal.php">Itens finais</a></li>
+                    <li class="tab"><a href="listaproblemas.php">Problemas</a></li>
+                    <li class="tab"><a href="listasolucoes.php">Soluções</a></li>
+                    <li class="tab"><a href="listasetorinformacoes.php">Setores e Informações</a></li>
                 </ul>
             </div>
         </div>
     </nav>
+
     <div id="sair" class="modal">
         <div class="modal-content">
             <div class="container center">
@@ -57,48 +59,69 @@
         </div>
     </div>
 
-
     <ul class="sidenav" id="mobile-demo">
-        <li><a href="Principal.html">Home</a></li>
+        <li><a href="PrincipalGeral.php">Home</a></li>
         <li><a href="">Sobre</a></li>
         <li><a href="">Contato</a></li>
     </ul>
 
-    <div id="modulos" class="col s12">
+    <div id="usuarios" class="col s12">
         <ul class="collection with-header container">
             <li class="collection-header">
-                <a href="../Interfaces de Cadastro/Especifico.html"><i class="material-icons right medium">add</i></a>
+                <a href="../Interfaces de Cadastro/usuario.php"><i class="material-icons right medium">add</i></a>
                 <h4>Específicos</h4>
             </li>
-            <li class="collection-item">Memória RAM
-                <a class="modal-trigger" href="#modal"><i class="material-icons right small">delete</i></a>
-                <a href="../Interfaces de Edição/Editar_Especifico.html"><i
-                        class="material-icons right small">create</i></a>
+            <li class="collection-item">  <table>
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Submódulo</th>
+                    <th colspan="2">Ação</th>
+                </tr>
+            </thead>
+            
+            <?php 
+                $e = new Especifico();
+                $lista_especifico = $e->lista();
+                foreach($lista_especifico as $lst_especifico) { ?>
+                <tr>
+                    
+                    <td><?php echo $lst_especifico->getNoespecifico() ?></td>
+                    <td><?php echo $lst_especifico->getSubmodulo() ?></td>
+                    <td>
+                        <a href="../Interfaces de Edição/editarespecifico.php.php?editar=<?php echo $lst_especifico->getIdespecifico() ?>" class="edit_btn">Alterar</a>
+                    </td>
+                    <td>
+                        <a href="../Exclusao/excluiespecifico.php?excluir=<?php echo $lst_especifico->getIdespecifico() ?>" 
+                           class="del_btn">Remover</a>
+                    </td>
+                </tr>
+            <?php } ?>
+            <tfoot>
+                <td colspan="4" align="center">
+                    <br> <button class="btn" name="listar" type="button" onclick="location.href='../Interfaces de Cadastro/especifico.php';">Cadastrar Específico</button>
+                </td>
+            </tfoot>
+        </table>
+        <?php
+            if (isset($_GET['exclusao'])) {
+                if ($_GET['exclusao'] == 0){
+                    $msg  = "<p name = 'msg' id='msg' class = 'msg_erro'>";
+                    $msg .= "Exclusão não pôde ser realizada.</p>";                  
+                    echo $msg;
+                }
+            }
+        ?>         <a class="modal-trigger" href="#modal"></a>
             </li>
-            <li class="collection-item">Cartuchos
-                <a class="modal-trigger" href="#modal"><i class="material-icons right small">delete</i></a>
-                <a href=""><i class="material-icons right small">create</i></a>
-            </li>
-            <li class="collection-item">HD
-                <a class="modal-trigger" href="#modal"><i class="material-icons right small">delete</i></a>
-                <a href=""><i class="material-icons right small">create</i></a>
-            </li>
-            <li class="collection-item">Fontes
-                <a class="modal-trigger" href="#modal"><i class="material-icons right small">delete</i></a>
-                <a href=""><i class="material-icons right small">create</i></a>
-            </li>
-            <li class="collection-item">Gabinetes
-                <a class="modal-trigger" href="#modal"><i class="material-icons right small">delete</i></a>
-                <a href=""><i class="material-icons right small">create</i></a>
-            </li>
+          
+           
+           
         </ul>
     </div>
-
-
     <div id="modal" class="modal">
         <div class="modal-content">
             <div class="container center">
-                <p class="confirmar">Tem certeza que deseja excluir?</p>
+                <p style="font-family: 'Roboto', sans-serif; font-size: 200%;">Tem certeza que deseja excluir?</p>
                 <button class="btn waves-effect waves-light" type="submit" name="action">Sim
                     <i class="material-icons right">check</i>
                 </button>
@@ -115,9 +138,19 @@
 
     <script src="../Interfaces de Cadastro/JS/jquery-3.5.1.min.js"></script>
     <script src="../Interfaces de Cadastro/JS/materialize.min.js"></script>
-    <script>$(document).ready(function () {
+    <script>document.addEventListener('DOMContentLoaded', function () {
+            var elems = document.querySelectorAll('.sidenav');
+            var instances = M.Sidenav.init(elems, options);
+        });
+        $(document).ready(function () {
             $('.modal').modal();
-        });</script>
+        });
+        $(document).ready(function () {
+            $('.tooltipped').tooltip();
+        });
+    </script>
+
+
 </body>
 
 </html>

@@ -1,4 +1,4 @@
-<?php  include('../../backend/classes/usuario.php'); ?>
+<?php  include('../../backend/classes/Modulo.php'); ?>
 
 <html lang="pt-br">
 
@@ -32,8 +32,8 @@
         <div class="row">
             <div class="nav-content col s12">
                 <ul class="tabs tabs-transparent col s11 offset-s1">
-                    <li class="tab active"><a href="listausuario.php">Usuários</a></li>
-                    <li class="tab"><a href="listamodulos.php">Módulos</a></li>
+                    <li class="tab"><a href="listausuario.php">Usuários</a></li>
+                    <li class="tab active"><a href="listamodulos.php">Módulos</a></li>
                     <li class="tab"><a href="listasubmodulos.php">Submódulos</a></li>
                     <li class="tab"><a href="listaespecifico.php">Específicos</a></li>
                     <li class="tab"><a href="listaitemfinal.php">Itens finais</a></li>
@@ -68,38 +68,38 @@
     <div id="usuarios" class="col s12">
         <ul class="collection with-header container">
             <li class="collection-header">
-                <a href="../Interfaces de Cadastro/Usuario.html"><i class="material-icons right medium">add</i></a>
+                <a href="../Interfaces de Cadastro/modulo.php"><i class="material-icons right medium">add</i></a>
                 <h4>Módulos</h4>
             </li>
             <li class="collection-item">  <table>
             <thead>
                 <tr>
                     <th>Nome</th>
-                    <th>Setor</th>
+                    
                     <th colspan="2">Ação</th>
                 </tr>
             </thead>
             
             <?php 
-                $c = new usuario(); 
-                $lista_usuario = $c->lista();
-                foreach($lista_usuario as $lst_usuario) { ?>
+                $m = new modulo();
+                $lista_modulo = $m->lista();
+                foreach($lista_modulo as $lst_modulo) { ?>
                 <tr>
                     
-                    <td><?php echo $lst_usuario->getNousuario() ?></td>
-                    <td><?php echo $lst_usuario->getSetor() ?></td>
+                    <td><?php echo $lst_modulo->getNomodulo() ?></td>
+                   
                     <td>
-                        <a href="usuarioAltera.php?editar=<?php echo $lst_usuario->getIdusuario(); ?>" class="edit_btn">Alterar</a>
+                        <a href="../Interfaces de Edição/editarmodulo.php?editar=<?php echo $lst_modulo->getIdmodulo() ?>" class="edit_btn">Alterar</a>
                     </td>
                     <td>
-                        <a href="usuarioExclui.php?excluir=<?php echo $lst_usuario->getIdusuario(); ?>" 
+                        <a href="../Exclusao/excluimodulo.php?excluir=<?php echo $lst_modulo->getIdmodulo() ?>" 
                            class="del_btn">Remover</a>
                     </td>
                 </tr>
             <?php } ?>
             <tfoot>
                 <td colspan="4" align="center">
-                    <br> <button class="btn" name="listar" type="button" onclick="location.href='usuarioCadastra.php';">Cadastrar usuario</button>
+                    <br> <button class="btn" name="listar" type="button" onclick="location.href='../Interfaces de Cadastro/modulo.php';">Cadastrar Módulo</button>
                 </td>
             </tfoot>
         </table>

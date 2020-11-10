@@ -5,7 +5,7 @@ class Informacao {
     private $idinformacoes;
     private $descricao;
     private $setor;
-    private $usuario;
+   
     
 
     function getIdinformacoes() {
@@ -20,9 +20,7 @@ class Informacao {
         return $this->setor;
     }
 
-    function getUsuario() {
-        return $this->usuario;
-    }
+   
 
     function setIdinformacoes($idinformacoes) {
         $this->idinformacoes = $idinformacoes;
@@ -36,34 +34,31 @@ class Informacao {
         $this->setor = $setor;
     }
 
-    function setUsuario($usuario) {
-        $this->usuario = $usuario;
-    }
+   
 
-    function __construct($idinformacoes = null, $descricao = null, $setor = null, $usuario = null) {
+    function __construct($idinformacoes = null, $descricao = null, $setor = null) {
         $this->idinformacoes = $idinformacoes;
         $this->descricao = $descricao;
         $this->setor = $setor;
-        $this->usuario = $usuario;
+       
     }
 
     
 
     public function lista(){
         try {
-            $sql  = "SELECT C.idinformacoes, C.descricao, F.nosetor, G.nome
+            $sql  = "SELECT C.idinformacao AS 'IdInformacao', C.descricao AS 'Descricao', F.nosetor AS 'Setor'
 FROM tbinformacoes AS C
-INNER JOIN tbsetor AS F ON C.idsetor = F.idsetor
-INNER JOIN tbusuario AS G ON C.idusuario = G.idusuario";
+INNER JOIN tbsetor AS F ON C.idsetor = F.idsetor";
             $conn = ConexaoBD::conecta();
             $sql  = $conn->query($sql);
             $res = array();  
             while($row = $sql->fetch(PDO::FETCH_OBJ)) {
                $informacao = new Informacao();
-               $informacao->setIdinformacoes($row->IdInformacoes);
+               $informacao->setIdinformacoes($row->IdInformacao);
                $informacao->setDescricao($row->Descricao);
-               $informacao->setSetor($row->NoSetor);
-               $informacao->setUsuario($row->Nousuario);
+               $informacao->setSetor($row->Setor);
+              
                 $res[] = $informacao;
             }
             return $res;
