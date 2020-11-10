@@ -1,5 +1,5 @@
 <?php  include('../../backend/classes/usuario.php'); ?>
-<!DOCTYPE html>
+
 <html lang="pt-br">
 
 <head>
@@ -60,7 +60,7 @@
     </div>
 
     <ul class="sidenav" id="mobile-demo">
-        <li><a href="Principal.html">Home</a></li>
+        <li><a href="PrincipalGeral.php">Home</a></li>
         <li><a href="">Sobre</a></li>
         <li><a href="">Contato</a></li>
     </ul>
@@ -68,7 +68,7 @@
     <div id="usuarios" class="col s12">
         <ul class="collection with-header container">
             <li class="collection-header">
-                <a href="../Interfaces de Cadastro/Usuario.html"><i class="material-icons right medium">add</i></a>
+                <a href="../Interfaces de Cadastro/usuario.php"><i class="material-icons right medium">add</i></a>
                 <h4>Usuários</h4>
             </li>
             <li class="collection-item">  <table>
@@ -89,10 +89,10 @@
                     <td><?php echo $lst_usuario->getNousuario() ?></td>
                     <td><?php echo $lst_usuario->getSetor() ?></td>
                     <td>
-                        <a href="usuarioAltera.php?editar=<?php echo $lst_usuario->getIdusuario(); ?>" class="edit_btn">Alterar</a>
+                        <a href="../Interfaces de Edição/editarusuario.php?editar=<?php echo $lst_usuario->getIdusuario(); ?>" class="edit_btn">Alterar</a>
                     </td>
                     <td>
-                        <a href="usuarioExclui.php?excluir=<?php echo $lst_usuario->getIdusuario(); ?>" 
+                        <a href="../Exclusao/excluiusuario.php?excluir=<?php echo $lst_usuario->getIdusuario(); ?>" 
                            class="del_btn">Remover</a>
                     </td>
                 </tr>

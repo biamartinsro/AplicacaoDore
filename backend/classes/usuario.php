@@ -77,7 +77,7 @@ ON b.idsetor = i.idsetor ORDER BY b.nousuario";
             while($row = $sql->fetch(PDO::FETCH_OBJ)) {
                 $usuario = new Usuario();               
                
-                $usuario->setNousuario($row->nome);
+                $usuario->setNousuario($row->nousuario);
                 $usuario->setSetor($row->nosetor);
                 $usuario->setEmail($row->email);
                 
