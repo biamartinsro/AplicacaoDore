@@ -61,7 +61,7 @@ class Problema {
 
     public function lista(){
         try {
-            $sql  = "SELECT C.idproblema, C.descricao, F.nosubmodulo, G.noespecifico, H.noitemfinal
+            $sql  = "SELECT C.idproblema AS 'IdProblema', C.descricao AS 'Descricao', F.nosubmodulo AS 'Submodulo', G.noespecifico AS 'Especifico', H.noitemfinal AS 'ItemFinal'
 FROM tbproblema AS C
 INNER JOIN tbsubmodulo AS F ON C.idsubmodulo = F.idsubmodulo
 INNER JOIN tbespecifico AS G ON C.idespecifico = G.idespecifico

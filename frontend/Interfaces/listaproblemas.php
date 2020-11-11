@@ -69,37 +69,41 @@
         <ul class="collection with-header container">
             <li class="collection-header">
                 <a href="../Interfaces de Cadastro/problema.php"><i class="material-icons right medium">add</i></a>
-                <h4>Itens Finais</h4>
+                <h4>Problemas</h4>
             </li>
             <li class="collection-item">  <table>
             <thead>
                 <tr>
-                    <th>Nome</th>
+                    <th>Descrição</th>
+                    <th>Submódulo</th>
                     <th>Específico</th>
+                    <th>Item Final</th>
                     <th colspan="2">Ação</th>
                 </tr>
             </thead>
             
             <?php 
-                $i = new ItemFinal();
-                $lista_itemfinal = $i->lista();
-                foreach($lista_itemfinal as $lst_item) { ?>
+                $p = new Problema();
+                $lista_problema = $p->lista();
+                foreach($lista_problema as $lst_problema) { ?>
                 <tr>
                     
-                    <td><?php echo $lst_item->getNoItemFinal(); ?></td>
-                    <td><?php echo $lst_item->getEspecifico() ?></td>
+                    <td><?php echo $lst_problema->getDescricao(); ?></td>
+                    <td><?php echo $lst_problema->getSubmodulo();?></td>
+                    <td><?php echo $lst_problema->getEspecifico()?></td>
+                    <td><?php echo $lst_problema->getItemfinal()?></td>
                     <td>
-                        <a href="../Interfaces de Edição/editaritemfinal.php?editar=<?php echo $lst_item->getIditemfinal() ?>" class="edit_btn">Alterar</a>
+                        <a href="../Interfaces de Edição/editarproblema.php?editar=<?php echo $lst_problema->getIdproblema(); ?>" class="edit_btn">Alterar</a>
                     </td>
                     <td>
-                        <a href="../Exclusao/excluiitemfinal.php?excluir=<?php echo $lst_item->getIditemfinal() ?>" 
+                        <a href="../Exclusao/excluiproblema.php?excluir=<?php echo $lst_problema->getIdproblema(); ?>" 
                            class="del_btn">Remover</a>
                     </td>
                 </tr>
             <?php } ?>
             <tfoot>
                 <td colspan="4" align="center">
-                    <br> <button class="btn" name="listar" type="button" onclick="location.href='../Interfaces de Cadastro/itemfinal.php';">Cadastrar Item Final</button>
+                    <br> <button class="btn" name="listar" type="button" onclick="location.href='../Interfaces de Cadastro/problema.php';">Cadastrar Problema</button>
                 </td>
             </tfoot>
         </table>

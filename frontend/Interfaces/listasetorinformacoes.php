@@ -1,4 +1,5 @@
 <?php  include('../../backend/classes/Informacao.php'); ?>
+<?php  include('../../backend/classes/Setor.php'); ?>
 
 <html lang="pt-br">
 
@@ -9,7 +10,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="shortcut icon" href="../Interfaces de Cadastro/Imagens/Dore-icone.png" type="image/x-icon">
-    <title>Informações</title>
+    <title>Setores e Informações</title>
     <link rel="stylesheet" href="CSS/Listas.css">
 </head>
 
@@ -118,6 +119,65 @@
            
         </ul>
     </div>
+    
+    
+    <!-- Setor -->
+    
+    
+    <div id="usuarios" class="col s12">
+        <ul class="collection with-header container">
+            <li class="collection-header">
+                <a href="../Interfaces de Cadastro/informacao.php"><i class="material-icons right medium">add</i></a>
+                <h4>Setor</h4>
+            </li>
+            <li class="collection-item">  <table>
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                   
+                    <th colspan="2">Ação</th>
+                </tr>
+            </thead>
+            
+            <?php 
+                $s = new Setor();
+                $lista_setor = $s->lista();
+                foreach($lista_setor as $lst_setor) { ?>
+                <tr>
+                    
+                    <td><?php echo $lst_setor->getNosetor(); ?></td>
+                   
+                    <td>
+                        <a href="../Interfaces de Edição/editarinformacao.php?editar=<?php echo $lst_setor->getIdsetor() ?>" class="edit_btn">Alterar</a>
+                    </td>
+                    <td>
+                        <a href="../Exclusao/excluiinformacao.php?excluir=<?php echo $lst_setor->getIdsetor(); ?>" 
+                           class="del_btn">Remover</a>
+                    </td>
+                </tr>
+            <?php } ?>
+            <tfoot>
+                <td colspan="4" align="center">
+                    <br> <button class="btn" name="listar" type="button" onclick="location.href='../Interfaces de Cadastro/informacao.php';">Cadastrar Setor</button>
+                </td>
+            </tfoot>
+        </table>
+        <?php
+            if (isset($_GET['exclusao'])) {
+                if ($_GET['exclusao'] == 0){
+                    $msg  = "<p name = 'msg' id='msg' class = 'msg_erro'>";
+                    $msg .= "Exclusão não pôde ser realizada.</p>";                  
+                    echo $msg;
+                }
+            }
+        ?>         <a class="modal-trigger" href="#modal"></a>
+            </li>
+          
+           
+           
+        </ul>
+    </div>
+    
     <div id="modal" class="modal">
         <div class="modal-content">
             <div class="container center">

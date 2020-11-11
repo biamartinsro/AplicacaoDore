@@ -60,9 +60,9 @@
     </div>
 
     <ul class="sidenav" id="mobile-demo">
-        <li><a href="Principal.html">Home</a></li>
-        <li><a href="">Sobre</a></li>
-        <li><a href="">Contato</a></li>
+        <li><a href="../Interfaces/PrincipalAdmin.php">Home</a></li>
+        <li><a href="../Interfaces Principais/Sobre.php">Sobre</a></li>
+        <li><a href="../Interfaces Principais/Contato.php">Contato</a></li>
     </ul>
 
     <div id="usuarios" class="col s12">
@@ -74,8 +74,8 @@
             <li class="collection-item">  <table>
             <thead>
                 <tr>
+                    <th>Código</th>
                     <th>Nome</th>
-                    
                     <th colspan="2">Ação</th>
                 </tr>
             </thead>
@@ -86,13 +86,14 @@
                 foreach($lista_modulo as $lst_modulo) { ?>
                 <tr>
                     
-                    <td><?php echo $lst_modulo->getNomodulo() ?></td>
+                    <td><?php echo $lst_modulo->getIdmodulo(); ?></td>
+                    <td><?php echo $lst_modulo->getNomodulo(); ?></td>
                    
                     <td>
-                        <a href="../Interfaces de Edição/editarmodulo.php?editar=<?php echo $lst_modulo->getIdmodulo() ?>" class="edit_btn">Alterar</a>
+                        <a href="../Interfaces de Edição/editarmodulo.php?editar=<?php echo $lst_modulo->getIdmodulo(); ?>" class="edit_btn">Alterar</a>
                     </td>
                     <td>
-                        <a href="../Exclusao/excluimodulo.php?excluir=<?php echo $lst_modulo->getIdmodulo() ?>" 
+                        <a href="../Exclusao/excluimodulo.php?excluir=<?php echo $lst_modulo->getIdmodulo(); ?>" 
                            class="del_btn">Remover</a>
                     </td>
                 </tr>

@@ -1,3 +1,5 @@
+<?php  include('../../backend/classes/Modulo.php'); ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -19,9 +21,9 @@
                 <a href="../Interfaces/Principal.html" class="brand-logo"><img src="./Imagens/Dore.png" alt=""></a>
                 <a href="#sair" class="modal-trigger"><i class="material-icons right">exit_to_app</i></a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li><a href="../Interfaces/Principal.html">Home</a></li>
-                    <li><a href="../Interfaces Principais/Sobre.html">Sobre</a></li>
-                    <li><a href="../Interfaces Principais/Contato.html">Contatos</a></li>
+                    <li><a href="../Interfaces/PrincipalAdmin.php">Home</a></li>
+                    <li><a href="../Interfaces Principais/Sobre.php">Sobre</a></li>
+                    <li><a href="../Interfaces Principais/Contato.php">Contatos</a></li>
                 </ul>
             </div>
         </nav>
@@ -40,7 +42,7 @@
             </div>
         </div>
     </div>
-
+ 
 
     <h1>Editar Módulos</h1>
 
