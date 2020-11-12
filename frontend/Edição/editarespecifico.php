@@ -1,3 +1,4 @@
+<?php include_once '../../backend/classes/Modulo.php'; ?>
 <!DOCTYPE html>
 <html lang="pt-br">
 

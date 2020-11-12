@@ -1,3 +1,5 @@
+<?php  include('../../backend/classes/Modulo.php'); ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -19,9 +21,9 @@
                 <a href="../Interfaces/Principal.html" class="brand-logo"><img src="./Imagens/Dore.png" alt=""></a>
                 <a class="modal-trigger" href="#sair"><i class="material-icons right">exit_to_app</i></a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li><a href="../Interfaces/Principal.html">Home</a></li>
-                    <li><a href="../Interfaces Principais/Sobre.html">Sobre</a></li>
-                    <li><a href="../Interfaces Principais/Contato.html">Contatos</a></li>
+                    <li><a href="../Interfaces/PrincipalAdmin.php">Home</a></li>
+                    <li><a href="../Interfaces Principais/Sobre.php">Sobre</a></li>
+                    <li><a href="../Interfaces Principais/Contato.php">Contatos</a></li>
                 </ul>
             </div>
         </nav>
@@ -45,15 +47,30 @@
 
     <h1>Cadastrar Módulos</h1>
 
-    <div class="row">
-        <div class="col s12">
-            <div class="input-field col s4 offset-s4">
-                <input type="text" id="nome">
-                <label for="">Digite o nome do módulo: </label>
-            </div>
+   <form method="post" action="CursoCadastra.php" >
+       
+        <div class="input-group">
+            <label>Nome:</label>
+            <input type="text" name="nome" id="nome" value="">
         </div>
+        <div class="input-group">
+            <button class="btn" type="submit" name="cadastrar" >Cadastrar</button>
+            <button class="btn" name="listar" type="button" 
+                    onclick="location.href='../Interfaces/listamodulos.php';">Listar
+            </button>
+        </div>
+    </form>
+    <?php
+        if (isset($_POST['cadastrar'])) {
+            $codigo = $_POST['codigo'];
+            $nome   = $_POST['nome'];
+            
+            $m = new modulo();
+            $m->insere($nome);
 
-    </div>
+            header('location: ../Interfaces/listamodulos.php');
+        }
+    ?>
     <div class="row">
         <div class="col s12">
             <button data-target="modal1" class="btn modal-trigger offset-s5 col s2">Feito
