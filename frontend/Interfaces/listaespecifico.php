@@ -5,25 +5,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../Interfaces de Cadastro/CSS/materialize.min.css">
+    <link rel="stylesheet" href="../Cadastro/CSS/materialize.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <link rel="shortcut icon" href="../Interfaces de Cadastro/Imagens/Dore-icone.png" type="image/x-icon">
+    <link rel="shortcut icon" href="../Cadastro/Imagens/Dore-icone.png" type="image/x-icon">
     <title>Lista de usuários</title>
-    <link rel="stylesheet" href="CSS/Listas.css">
+    <link rel="stylesheet" href="../Interfaces/CSS/Listas.css">
 </head>
 
 <body>
 
     <nav class="nav-extended teal z-depth-0">
         <div class="nav-wrapper teal container">
-            <a href="PrincipalGeral.php" class="brand-logo"><img src="../Interfaces de Cadastro/Imagens/Dore.png"
+            <a href="PrincipalGeral.php" class="brand-logo"><img src="../Cadastro/Imagens/Dore.png"
                     alt=""></a>
                     <a class="modal-trigger" href="#sair"><i class="material-icons right">exit_to_app</i></a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li><a href="PrincipalGeral.php">Home</a></li>
-                <li><a href="../Interfaces Principais/Sobre.php">Sobre</a></li>
-                <li><a href="../Interfaces Principais/Contato.php">Contatos</a></li>
+                <li><a href="../Principais/Sobre.php">Sobre</a></li>
+                <li><a href="../Principais/Contato.php">Contatos</a></li>
             </ul>
         </div>
 
@@ -89,7 +89,7 @@
                     <td><?php echo $lst_especifico->getNoespecifico() ?></td>
                     <td><?php echo $lst_especifico->getSubmodulo() ?></td>
                     <td>
-                        <a href="../Interfaces de Edição/editarespecifico.php.php?editar=<?php echo $lst_especifico->getIdespecifico() ?>" class="edit_btn">Alterar</a>
+                        <a href="../Edição/editarespecifico.php.php?editar=<?php echo $lst_especifico->getIdespecifico() ?>" class="edit_btn">Alterar</a>
                     </td>
                     <td>
                         <a href="../Exclusao/excluiespecifico.php?excluir=<?php echo $lst_especifico->getIdespecifico() ?>" 
@@ -136,8 +136,8 @@
         <blockquote>Dore Refrigerantes ©</blockquote>
     </footer>
 
-    <script src="../Interfaces de Cadastro/JS/jquery-3.5.1.min.js"></script>
-    <script src="../Interfaces de Cadastro/JS/materialize.min.js"></script>
+    <script src="../Cadastro/JS/jquery-3.5.1.min.js"></script>
+    <script src="../Cadastro/JS/materialize.min.js"></script>
     <script>document.addEventListener('DOMContentLoaded', function () {
             var elems = document.querySelectorAll('.sidenav');
             var instances = M.Sidenav.init(elems, options);
