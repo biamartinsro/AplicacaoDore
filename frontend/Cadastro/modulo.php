@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./CSS/materialize.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="./CSS/Modulo.css">
+    <link rel="stylesheet" href="CSS/Modulo.css">
     <title>Cadastrar módulo</title>
 </head>
 
@@ -47,7 +47,7 @@
 
     <h1>Cadastrar Módulos</h1>
 
-   <form method="post" action="CursoCadastra.php" >
+    <form method="post" action="modulo.php" >
        
         <div class="input-group">
             <label>Nome:</label>

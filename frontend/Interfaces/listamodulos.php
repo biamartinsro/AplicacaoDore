@@ -23,7 +23,7 @@
             <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li><a href="PrincipalGeral.php">Home</a></li>
                 <li><a href="../Interfaces Principais/Sobre.php">Sobre</a></li>
-                <li><a href="../Interfaces Principais/Contato.php">Contatos</a></li>
+                <li><a href="../Principais/Contato.php">Contatos</a></li>
             </ul>
         </div>
 
@@ -100,7 +100,7 @@
             <?php } ?>
             <tfoot>
                 <td colspan="4" align="center">
-                    <br> <button class="btn" name="listar" type="button" onclick="location.href='../Interfaces de Cadastro/modulo.php';">Cadastrar Módulo</button>
+                    <br> <button class="btn" name="listar" type="button" onclick="location.href='../Cadastro/modulo.php';">Cadastrar Módulo</button>
                 </td>
             </tfoot>
         </table>

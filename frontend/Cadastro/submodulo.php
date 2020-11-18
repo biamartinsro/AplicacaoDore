@@ -1,3 +1,6 @@
+<?php  include('../../backend/classes/Submodulo.php'); ?>
+<?php  include('../../backend/classes/Modulo.php'); ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -13,16 +16,16 @@
 </head>
 
 
-<body>
+
     <header>
         <nav class="teal z-depth-0">
             <div class="nav-wrapper teal container">
                 <a href="../Interfaces/Principal.html" class="brand-logo"><img src="./Imagens/Dore.png" alt=""></a>
                 <a class="modal-trigger" href="#sair"><i class="material-icons right">exit_to_app</i></a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li><a href="../Interfaces/Principal.html">Home</a></li>
-                    <li><a href="../Interfaces Principais/Sobre.html">Sobre</a></li>
-                    <li><a href="../Interfaces Principais/Contato.html">Contatos</a></li>
+                    <li><a href="../Interfaces/PrincipalAdmin.php">Home</a></li>
+                    <li><a href="../Principais/Sobre.php">Sobre</a></li>
+                    <li><a href="../Principais/Contato.php">Contatos</a></li>
                 </ul>
             </div>
         </nav>
@@ -41,7 +44,7 @@
             </div>
         </div>
     </div>
-
+    <form method="post" action="submodulo.php">
     <h1>Cadastrar Submódulo</h1>
 
     <div class="row">
@@ -52,7 +55,7 @@
             </div>
             <div class="col s12" style="height: 20px;"></div>
         </div>
-
+    </div>
         <!-- Modal -->
         <div class="row">
             <div class="col s12">
@@ -62,44 +65,48 @@
 
         <div id="modal1" class="modal">
             <div class="modal-content">
-                <form action="#">
+             <?php 
+                $m = new modulo();
+                $lista_modulo = $m->lista();
+                foreach($lista_modulo as $lst_modulo) { ?>
                     <h2>Lista de Módulos</h2>
                     <p>
                         <label>
-                            <input class="with-gap" name="group1" type="radio" />
-                            <span>Software</span>
+                            <input class="with-gap" name="modulo" type="radio"/>
+                            <span><?php echo $lst_modulo->getIdmodulo(); ?></span>
+                               <span><?php echo $lst_modulo->getNomodulo(); ?></span>
                         </label>
                     </p>
-                    <p>
-                        <label>
-                            <input class="with-gap" name="group1" type="radio" />
-                            <span>Hardware</span>
-                        </label>
-                    </p>
-                    <p>
-                        <label>
-                            <input class="with-gap" name="group1" type="radio" />
-                            <span>Redes</span>
-                        </label>
-                    </p>
-                    <p>
-                        <label>
-                            <input name="group1" class="with-gap" type="radio" />
-                            <span>ERP</span>
-                        </label>
-                    </p>
-                </form>
+                                  
+                
+                <?php } ?>
+                
             </div>
             <div class="modal-footer">
                 <a href="#!" class="modal-close waves-effect waves-green btn-flat">Pronto</a>
             </div>
         </div>
 
-        <div class="botao">
-            <button class="btn waves-effect waves-light" type="submit" name="action">Feito
-                <i class="material-icons right">check</i>
+         <div class="input-group">
+            <button class="btn" type="submit" name="cadastrar" >Cadastrar</button>
+            <button class="btn" name="listar" type="button" 
+                    onclick="location.href='../Interfaces/listasubmodulos.php';">Listar
             </button>
         </div>
+    </form>
+
+   <?php
+        if (isset($_POST['cadastrar'])) {
+          
+            $nome   = $_POST['nome'];
+            $idmodulo = $_POST['modulo'];
+            
+            $s = new Submodulo();
+            $s->insere($nosubmodulo, $idmodulo);
+
+            header('location: ../Interfaces/listasubmodulos.php');
+        }
+    ?>
 
         <!-- Rodapé -->
         <footer>
@@ -114,6 +121,6 @@
                 $('.modal').modal();
             });
         </script>
-</body>
+
 
 </html>
