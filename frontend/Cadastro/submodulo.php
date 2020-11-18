@@ -73,6 +73,7 @@
                     <p>
                         <label>
                             <input class="with-gap" name="modulo" type="radio"/>
+                            
                             <span><?php echo $lst_modulo->getIdmodulo(); ?></span>
                                <span><?php echo $lst_modulo->getNomodulo(); ?></span>
                         </label>

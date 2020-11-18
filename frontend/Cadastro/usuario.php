@@ -17,12 +17,12 @@
         <nav class="teal z-depth-0">
             <div class="navbar-fixed ">
                 <div class="nav-wrapper teal container">
-                    <a href="../Interfaces/Principal.html" class="brand-logo"><img src="./Imagens/Dore.png" alt=""></a>
+                    <a href="../Interfaces/PrincipalAdmin.php" class="brand-logo"><img src="./Imagens/Dore.png" alt=""></a>
                     <a class="modal-trigger" href="#sair"><i class="material-icons right">exit_to_app</i></a>
                     <ul id="nav-mobile" class="right hide-on-med-and-down">
-                        <li><a href="../Interfaces/Principal.html">Home</a></li>
-                        <li><a href="../Interfaces Principais/Sobre.html">Sobre</a></li>
-                        <li><a href="../Interfaces Principais/Contato.html">Contatos</a></li>
+                        <li><a href="../Interfaces/PrincipalAdmin.php">Home</a></li>
+                        <li><a href="../Principais/Sobre.php">Sobre</a></li>
+                        <li><a href="../Principais/Contato.php">Contatos</a></li>
                     </ul>
                 </div>
             </div>
