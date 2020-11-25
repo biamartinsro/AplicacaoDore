@@ -45,15 +45,19 @@
         </div>
     </div>
    
-    <h1>Cadastrar Submódulo</h1>
+    <h1>Cadastrar Submodulo</h1>
     <form method="post" action="submodulo.php" >
+         <div class="input-group">
+            <label>Código:</label>
+            <input type="text" name="id" value="">
+        </div>
         <div class="input-group">
             <label>Nome:</label>
             <input type="text" name="nome" value="">
         </div>
         <div class="input-group">
             <label>Modulo:</label>
-            <input type="text" name="modulo" value="">
+            <input type="number" name="modulo" value="">
         </div>
         <div class="input-group">
             <button class="btn" type="submit" name="cadastrar" >Cadastrar</button>
@@ -66,9 +70,10 @@
         if (isset($_POST['cadastrar'])) {
             $nome = $_POST['nome'];
             $modulo   = $_POST['modulo'];
+            $codigo = $_POST[ 'id'];
             
             $s = new Submodulo();
-            $s->insere($nome, $modulo);
+            $s->altera($nome, $modulo,$codigo);
 
             header('location: ../Interfaces/listasubmodulos.php');
         }
