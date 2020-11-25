@@ -44,66 +44,31 @@
             </div>
         </div>
     </div>
-    <form method="post" action="submodulo.php">
+   
     <h1>Cadastrar Submódulo</h1>
-
-    <div class="row">
-        <div class="col s12">
-            <div class="input-field col s4 offset-s4">
-                <input type="text" id="nome">
-                <label for="">Digite o nome do submódulo: </label>
-            </div>
-            <div class="col s12" style="height: 20px;"></div>
+    <form method="post" action="submodulo.php" >
+        <div class="input-group">
+            <label>Nome:</label>
+            <input type="text" name="nome" value="">
         </div>
-    </div>
-        <!-- Modal -->
-        <div class="row">
-            <div class="col s12">
-                <button data-target="modal1" class="btn modal-trigger offset-s3 col s6">Escolha o Módulo</button>
-            </div>
+        <div class="input-group">
+            <label>Modulo:</label>
+            <input type="text" name="modulo" value="">
         </div>
-
-        <div id="modal1" class="modal">
-            <div class="modal-content">
-             <?php 
-                $m = new modulo();
-                $lista_modulo = $m->lista();
-                foreach($lista_modulo as $lst_modulo) { ?>
-                    <h2>Lista de Módulos</h2>
-                    <p>
-                        <label>
-                            <input class="with-gap" name="modulo" type="radio"/>
-                            
-                            <span><?php echo $lst_modulo->getIdmodulo(); ?></span>
-                               <span><?php echo $lst_modulo->getNomodulo(); ?></span>
-                        </label>
-                    </p>
-                                  
-                
-                <?php } ?>
-                
-            </div>
-            <div class="modal-footer">
-                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Pronto</a>
-            </div>
-        </div>
-
-         <div class="input-group">
+        <div class="input-group">
             <button class="btn" type="submit" name="cadastrar" >Cadastrar</button>
             <button class="btn" name="listar" type="button" 
                     onclick="location.href='../Interfaces/listasubmodulos.php';">Listar
             </button>
         </div>
     </form>
-
-   <?php
+    <?php
         if (isset($_POST['cadastrar'])) {
-          
-            $nome   = $_POST['nome'];
-            $idmodulo = $_POST['modulo'];
+            $nome = $_POST['nome'];
+            $modulo   = $_POST['modulo'];
             
             $s = new Submodulo();
-            $s->insere($nosubmodulo, $idmodulo);
+            $s->insere($nome, $modulo);
 
             header('location: ../Interfaces/listasubmodulos.php');
         }
