@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="./CSS/materialize.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="./CSS/Submodulo.css">
-    <title>Cadastrar sobmódulos</title>
+    <title>Cadastrar sobmodulos</title>
 </head>
 
 
