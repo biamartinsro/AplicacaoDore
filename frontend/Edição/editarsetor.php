@@ -1,5 +1,5 @@
 
-<?php  include('../../backend/classes/Informacao.php'); ?>
+<?php  include('../../backend/classes/Setor.php'); ?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="./CSS/materialize.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="./CSS/EditarSubmodulo.css">
-    <title>Editar Informação</title>
+    <title>Editar Setor</title>
 </head>
 
 
@@ -21,11 +21,11 @@
 if (isset($_GET['editar'])) {
     $id = $_GET['editar'];
 
-    $i = new Informacao();
-    $informacao = $i->consulta($id);
-    foreach($informacao as $lst_informacao) {
-        $descricao = $lst_informacao->getDescricao();
-        $setor = $lst_informacao->getSetor();
+    $s = new Setor();
+    $setor= $s->consulta($id);
+    foreach($setor as $lst_setor) {
+        $nome= $lst_setor->getNoSetor();
+
 
     }
 }
@@ -58,23 +58,20 @@ if (isset($_GET['editar'])) {
     </div>
 </div>
 
-<h1>Editar Informação</h1>
+<h1>Editar Setor</h1>
 
 
 
-<form method="post" action="editarinformacao.php" >
+<form method="post" action="editarsetor.php" >
 
     <div class="input-group">
         <input type="hidden" name="id" value="<?php echo $id; ?>">
     </div>
     <div class="input-group">
-        <label>Descrição:</label>
-        <input type="text" name="descricao" value="<?php echo $descricao; ?>">
+        <label>Nome:</label>
+        <input type="text" name="nome" value="<?php echo $nome; ?>">
     </div>
-    <div class="input-group">
-        <label>Setor:</label>
-        <input type="number" name="setor" value="<?php echo $setor;?>">
-    </div>
+
 
     <div class="input-group">
         <button class="btn" type="submit" name="alterar"  >Alterar</button>
@@ -82,12 +79,12 @@ if (isset($_GET['editar'])) {
 </form>
 <?php
 if (isset($_POST['alterar'])) {
-    $descricao = $_POST['descricao'];
-    $setor = $_POST['setor'];
+    $nome= $_POST['nome'];
+
     $codigo = $_POST['id'];
 
-    $i = new Informacao();
-    $i->altera($descricao, $setor, $codigo);
+    $s = new Setor();
+    $s->altera($nome, $codigo);
 
     header('location: ../Interfaces/listasetorinformacoes.php');
 }
