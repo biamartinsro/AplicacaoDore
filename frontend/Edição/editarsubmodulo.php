@@ -67,17 +67,23 @@
             $submodulo = $s->consulta($id); 
             foreach($submodulo as $lst_submodulo) {
                 $nome = $lst_submodulo->getNome();
+                $modulo = $lst_submodulo->getModulo();
             } 
         }
     ?>    
      
     <form method="post" action="editarsubmodulo.php" >
+
         <div class="input-group">
-            <input type="hidden" name="nome" value="<?php echo $nome; ?>">
+            <input type="hidden" name="id" value="<?php echo $id; ?>">
         </div>
         <div class="input-group">
             <label>Nome:</label>
-            <input type="number" name="modulo" value="">
+            <input type="text" name="nome" value="<?php echo $nome; ?>">
+        </div>
+        <div class="input-group">
+            <label>Módulo:</label>
+            <input type="number" name="modulo" value="<?php echo $modulo;?>">
         </div>
         <div class="input-group">
             <button class="btn" type="submit" name="alterar"  >Alterar</button>
@@ -87,11 +93,12 @@
         if (isset($_POST['alterar'])) {
             $modulo = $_POST['modulo'];
             $nome = $_POST['nome'];
+            $codigo = $_POST['id'];
             
             $s = new Submodulo();
-            $s->altera($nome, $id);
+            $s->altera($nome, $modulo,$codigo);
 
-            header('location: CursoLista.php');
+            header('location: ../Interfaces/listasubmodulos.php');
         }
     ?>
 
