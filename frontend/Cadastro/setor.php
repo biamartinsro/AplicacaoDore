@@ -1,4 +1,4 @@
-<?php  include('../../backend/classes/Informacao.php'); ?>
+<?php  include('../../backend/classes/Setor.php'); ?>
 
 
 <!DOCTYPE html>
@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="./CSS/materialize.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="./CSS/Submodulo.css">
-    <title>Cadastrar Informação</title>
+    <title>Cadastrar Setor</title>
 </head>
 
 
@@ -45,16 +45,12 @@
     </div>
 </div>
 
-<h1>Cadastrar Informação  </h1>
-<form method="post" action="informacao.php" >
+<h1>Cadastrar Setor </h1>
+<form method="post" action="setor.php" >
 
     <div class="input-group">
-        <label>Descrição:</label>
-        <input type="text" name="descricao" value="">
-    </div>
-    <div class="input-group">
-        <label>Setor:</label>
-        <input type="number" name="setor" value="">
+        <label>Nome:</label>
+        <input type="text" name="nome" value="">
     </div>
 
     <div class="input-group">
@@ -66,12 +62,12 @@
 </form>
 <?php
 if (isset($_POST['cadastrar'])) {
-    $descricao = $_POST['descricao'];
-    $setor   = $_POST['setor'];
+    $nome = $_POST['nome'];
+    $modulo   = $_POST['modulo'];
     $codigo = $_POST[ 'id'];
 
-    $i = new Informacao();
-    $i->insere($descricao, $setor);
+    $s = new Setor();
+    $s->insere($nome);
 
     header('location: ../Interfaces/listasetorinformacoes.php');
 }

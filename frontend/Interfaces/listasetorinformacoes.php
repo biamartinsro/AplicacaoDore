@@ -127,12 +127,13 @@
     <div id="usuarios" class="col s12">
         <ul class="collection with-header container">
             <li class="collection-header">
-                <a href="../Cadastro/informacao.php"><i class="material-icons right medium">add</i></a>
+                <a href="../Cadastro/setor.php"><i class="material-icons right medium">add</i></a>
                 <h4>Setor</h4>
             </li>
             <li class="collection-item">  <table>
             <thead>
                 <tr>
+                    <th>Código</th>
                     <th>Nome</th>
 
                     <th colspan="2">Ação</th>
@@ -144,7 +145,7 @@
                 $lista_setor = $s->lista();
                 foreach($lista_setor as $lst_setor) { ?>
                 <tr>
-
+                    <td><?php echo $lst_setor->getIdSetor(); ?></td>
                     <td><?php echo $lst_setor->getNosetor(); ?></td>
 
                     <td>
@@ -158,7 +159,7 @@
             <?php } ?>
             <tfoot>
                 <td colspan="4" align="center">
-                    <br> <button class="btn" name="listar" type="button" onclick="location.href='../Cadastro/informacao.php';">Cadastrar Setor</button>
+                    <br> <button class="btn" name="listar" type="button" onclick="location.href='../Cadastro/setor.php';">Cadastrar Setor</button>
                 </td>
             </tfoot>
         </table>
