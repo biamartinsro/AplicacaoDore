@@ -103,15 +103,15 @@ INNER JOIN tbsubmodulo AS F ON C.idsubmodulo = F.idsubmodulo WHERE idespecifico 
         } //try-catch     
     } //método altera
     
-    public function insere($noespecifico, $idsubmodulo){
+    public function insere($noitemfinal, $idespecifico){
       try {
-        $sql = "INSERT INTO Tbespecifico(noespecifico,idsubmodulo)
+        $sql = "INSERT INTO TbItemFinal(noitemfinal,idespecifico)
                 VALUES (?,?);";
         $conn = ConexaoBD::conecta();
 
         $stm  = $conn->prepare($sql);              
-        $stm->bindParam(1, $noespecifico);
-        $stm->bindParam(2, $idsubmodulo);
+        $stm->bindParam(1, $noitemfinal);
+        $stm->bindParam(2, $idespecifico);
 	$stm->execute();
         return 1;
       } catch (Exception $e) {

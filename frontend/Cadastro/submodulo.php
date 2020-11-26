@@ -47,10 +47,7 @@
    
     <h1>Cadastrar Submodulo</h1>
     <form method="post" action="submodulo.php" >
-         <div class="input-group">
-            <label>Código:</label>
-            <input type="text" name="id" value="">
-        </div>
+
         <div class="input-group">
             <label>Nome:</label>
             <input type="text" name="nome" value="">
@@ -73,7 +70,7 @@
             $codigo = $_POST[ 'id'];
             
             $s = new Submodulo();
-            $s->altera($nome, $modulo,$codigo);
+            $s->insere($nome, $modulo);
 
             header('location: ../Interfaces/listasubmodulos.php');
         }

@@ -68,12 +68,13 @@
     <div id="usuarios" class="col s12">
         <ul class="collection with-header container">
             <li class="collection-header">
-                <a href="../Interfaces de Cadastro/usuario.php"><i class="material-icons right medium">add</i></a>
+                <a href="../Cadastro/especifico.php"><i class="material-icons right medium">add</i></a>
                 <h4>Específicos</h4>
             </li>
             <li class="collection-item">  <table>
             <thead>
                 <tr>
+                    <th>Código</th>
                     <th>Nome</th>
                     <th>Submódulo</th>
                     <th colspan="2">Ação</th>
@@ -85,7 +86,7 @@
                 $lista_especifico = $e->lista();
                 foreach($lista_especifico as $lst_especifico) { ?>
                 <tr>
-                    
+                    <td><?php echo $lst_especifico->getIdEspecifico(); ?></td>
                     <td><?php echo $lst_especifico->getNoespecifico() ?></td>
                     <td><?php echo $lst_especifico->getSubmodulo() ?></td>
                     <td>
@@ -99,7 +100,7 @@
             <?php } ?>
             <tfoot>
                 <td colspan="4" align="center">
-                    <br> <button class="btn" name="listar" type="button" onclick="location.href='../Interfaces de Cadastro/especifico.php';">Cadastrar Específico</button>
+                    <br> <button class="btn" name="listar" type="button" onclick="location.href='../Cadastro/especifico.php';">Cadastrar Específico</button>
                 </td>
             </tfoot>
         </table>
