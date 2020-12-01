@@ -90,7 +90,7 @@
                     <td><?php echo $lst_especifico->getNoespecifico() ?></td>
                     <td><?php echo $lst_especifico->getSubmodulo() ?></td>
                     <td>
-                        <a href="../Edição/editarespecifico.php.php?editar=<?php echo $lst_especifico->getIdespecifico() ?>" class="edit_btn">Alterar</a>
+                        <a href="../Edição/editarespecifico.php?editar=<?php echo $lst_especifico->getIdespecifico() ?>" class="edit_btn">Alterar</a>
                     </td>
                     <td>
                         <a href="../Exclusao/excluiespecifico.php?excluir=<?php echo $lst_especifico->getIdespecifico() ?>" 

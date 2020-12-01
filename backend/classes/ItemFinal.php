@@ -61,21 +61,21 @@ INNER JOIN tbespecifico AS F ON C.idespecifico = F.idespecifico";
         }     
     }
     
-    public function consulta($idespecifico){
+    public function consulta($iditemfinal){
         try {
-            $sql  = "SELECT C.idespecifico, C.noespecifico, F.nosubmodulo AS 'Submodulo' 
-FROM tbespecifico AS C
-INNER JOIN tbsubmodulo AS F ON C.idsubmodulo = F.idsubmodulo WHERE idespecifico = ".$idespecifico." ORDER BY noespecifico";
+            $sql  = "SELECT C.iditemfinal as 'IdItemFinal', C.noitemfinal as 'NoItemFinal', F.noespecifico AS 'Especifico' 
+FROM tbitemfinal AS C
+INNER JOIN tbespecifico AS F ON C.idespecifico = F.idespecifico WHERE iditemfinal = ".$iditemfinal." ORDER BY noitemfinal";
             $conn = ConexaoBD::conecta();
             $sql  = $conn->query($sql);
 
             $res = array();  
             while($row = $sql->fetch(PDO::FETCH_OBJ)) {
-               $especifico = new Especifico();               
-                $especifico->setIdespecifico($row->IdEspecifico);
-                $especifico->setNoespecifico($row->NoEspecifico);
-                $especifico->setSubmodulo($row->Submodulo);
-                $res[] = $especifico;
+                $itemfinal = new ItemFinal();
+                $itemfinal->setIdItemFinal($row->IdItemFinal);
+                $itemfinal->setNoItemFinal($row->NoItemFinal);
+                $itemfinal->setEspecifico($row->Especifico);
+                $res[] = $itemfinal;
             }
             return $res;
         } catch (Exception $e) {
@@ -83,18 +83,18 @@ INNER JOIN tbsubmodulo AS F ON C.idsubmodulo = F.idsubmodulo WHERE idespecifico 
         }     
     }
     
-    public function altera($noespecifico,$submodulo, $codigo){
+    public function altera($noitemfinal,$especifico, $codigo){
         try {
-            $sql = "UPDATE Tbespecifico
-                       SET NoEspecifico = ?,
-                       SET IdSubmodulo = ?
+            $sql = "UPDATE TbItemFinal
+                       SET NoItemFinal = ?,
+                       SET IdEspecifico = ?
                        
-                     WHERE Idespecifico = ?"; 
+                     WHERE IdItemFinal = ?";
             $conn = ConexaoBD::conecta();
 
             $stm = $conn->prepare($sql);
-            $stm->bindParam(1, $noespecifico);
-            $stm->bindParam(2, $idsubmodulo);
+            $stm->bindParam(1, $noitemfinal);
+            $stm->bindParam(2, $idespecifico);
             $stm->bindParam(3, $codigo);
             $stm->execute();
             return 1; 

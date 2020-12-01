@@ -60,21 +60,42 @@ INNER JOIN tbsubmodulo AS F ON C.idsubmodulo = F.idsubmodulo";
              echo "ERRO: ".$e->getMessage()."<br><br>";
         }     
     }
+
+
+    public function consulta($idespecifico){
+        try {
+            $sql  = "SELECT idespecifico, noespecifico FROM tbespecifico WHERE idespecifico = ".$idespecifico." ORDER BY Noespecifico";
+            $conn = ConexaoBD::conecta();
+            $sql  = $conn->query($sql);
+
+            $res = array();
+            while($row = $sql->fetch(PDO::FETCH_OBJ)) {
+                $especifico = new Especifico();
+                $especifico->setIdespecifico($row->idespecifico);
+                $especifico->setNoespecifico($row->noespecifico);
+
+                $res[] = $especifico;
+            }
+            return $res;
+        } catch (Exception $e) {
+            return "ERRO: ".$e->getMessage()."<br><br>";
+        }
+    }
     
    
     
-    public function altera($noitemfinal,$especifico, $codigo){
+    public function altera($noespecifico,$submodulo, $codigo){
         try {
-            $sql = "UPDATE Tbitemfinal
-                       SET NoItemFinal = ?,
-                       SET IdEspecifico = ?
+            $sql = "UPDATE TbEspecifico
+                       SET NoEspecifico = ?,
+                            IdSubmodulo = ?
                        
-                     WHERE IdItemFinal = ?"; 
+                     WHERE IdEspecifico = ?";
             $conn = ConexaoBD::conecta();
 
             $stm = $conn->prepare($sql);
-            $stm->bindParam(1, $noitemfinal);
-            $stm->bindParam(2, $especifico);
+            $stm->bindParam(1, $noespecifico);
+            $stm->bindParam(2, $submodulo);
             $stm->bindParam(3, $codigo);
             $stm->execute();
             return 1; 
