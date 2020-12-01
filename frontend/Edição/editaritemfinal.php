@@ -82,10 +82,10 @@ if (isset($_GET['editar'])) {
 if (isset($_POST['alterar'])) {
     $nome = $_POST['nome'];
     $especifico = $_POST ['especifico'];
-    $codigo = $_POST['id'];
+    $id = $_POST['id'];
 
     $i = new ItemFinal();
-    $i->altera($nome, $especifico, $codigo);
+    $i->altera($nome, $especifico, $id);
 
     header('location: ../Interfaces/listaitemfinal.php');
 }

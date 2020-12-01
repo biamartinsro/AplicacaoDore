@@ -85,16 +85,13 @@ INNER JOIN tbespecifico AS F ON C.idespecifico = F.idespecifico WHERE iditemfina
     
     public function altera($noitemfinal,$especifico, $codigo){
         try {
-            $sql = "UPDATE TbItemFinal
-                       SET NoItemFinal = ?,
-                       SET IdEspecifico = ?
-                       
-                     WHERE IdItemFinal = ?";
+            $sql = "UPDATE tbitemfinal SET noitemfinal=?,idespecifico=?
+where iditemfinal = ?";
             $conn = ConexaoBD::conecta();
 
             $stm = $conn->prepare($sql);
             $stm->bindParam(1, $noitemfinal);
-            $stm->bindParam(2, $idespecifico);
+            $stm->bindParam(2, $especifico);
             $stm->bindParam(3, $codigo);
             $stm->execute();
             return 1; 
@@ -121,7 +118,7 @@ INNER JOIN tbespecifico AS F ON C.idespecifico = F.idespecifico WHERE iditemfina
     
     public function exclui($codigo){
       try {
-	      $sql = "DELETE FROM Tbespecifico WHERE Idespecifico = ?"; 
+	      $sql = "DELETE FROM tbitemfinal WHERE iditemfinal = ?";
 	      $conn = ConexaoBD::conecta();
                                        
 	      $stm = $conn->prepare($sql);

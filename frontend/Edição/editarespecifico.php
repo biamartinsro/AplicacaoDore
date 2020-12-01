@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./CSS/materialize.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="./CSS/EditarSubmodulo.css">
+    <link rel="stylesheet" href="./CSS/EditarEspecifico.css">
     <title>Editar Específico</title>
 </head>
 
