@@ -1,4 +1,5 @@
-<?php include_once '../../'; ?>
+
+<?php  include('../../backend/classes/Informacao.php'); ?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -9,120 +10,105 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./CSS/materialize.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="./CSS/EditarSetor-Informacoes.css">
-    <title>Editar setores e informações</title>
+    <link rel="stylesheet" href="./CSS/EditarSubmodulo.css">
+    <title>Editar Informação</title>
 </head>
 
-<body>
-    <header>
-        <nav class="teal z-depth-0">
-            <div class="navbar-fixed ">
-                <div class="nav-wrapper teal container">
-                    <a href="../Interfaces/Principal.html" class="brand-logo"><img src="./Imagens/Dore.png" alt=""></a>
-                    <a href="#sair" class="modal-trigger"><i class="material-icons right">exit_to_app</i></a>
-                    <ul id="nav-mobile" class="right hide-on-med-and-down">
-                        <li><a href="../Interfaces/Principal.html">Home</a></li>
-                        <li><a href="../Interfaces Principais/Sobre.html">Sobre</a></li>
-                        <li><a href="../Interfaces Principais/Contato.html">Contatos</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
 
-    <div id="sair" class="modal">
-        <div class="modal-content">
-            <div class="container center">
-                <p class="confirmar">Tem certeza que deseja sair?</p>
-                <button class="btn waves-effect waves-light" type="submit" name="action">Sim
-                    <i class="material-icons right">check</i>
-                </button>
-                <button class="btn waves-effect waves-light" type="submit" name="action">Não
-                    <i class="material-icons right">cancel</i>
-                </button>
-            </div>
+<body>
+
+<?php
+if (isset($_GET['editar'])) {
+    $id = $_GET['editar'];
+
+    $i = new Informacao();
+    $informacao = $i->consulta($id);
+    foreach($informacao as $lst_informacao) {
+        $descricao = $lst_informacao->getDescricao();
+        $setor = $lst_informacao->getSetor();
+
+    }
+}
+?>
+<header>
+    <nav class="teal z-depth-0">
+        <div class="nav-wrapper teal container">
+            <a href="../Interfaces/Principal.html" class="brand-logo"><img src="./Imagens/Dore.png" alt=""></a>
+            <a href="#sair" class="modal-trigger"><i class="material-icons right">exit_to_app</i></a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="../Interfaces/Principal.html">Home</a></li>
+                <li><a href="../Interfaces Principais/Sobre.html">Sobre</a></li>
+                <li><a href="../Interfaces Principais/Contato.html">Contatos</a></li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+<div id="sair" class="modal">
+    <div class="modal-content">
+        <div class="container center">
+            <p class="confirmar">Tem certeza que deseja sair?</p>
+            <button class="btn waves-effect waves-light" type="submit" name="action">Sim
+                <i class="material-icons right">check</i>
+            </button>
+            <button class="btn waves-effect waves-light" type="submit" name="action">Não
+                <i class="material-icons right">cancel</i>
+            </button>
         </div>
     </div>
+</div>
 
-    <h2>Editar Setores</h1>
+<h1>Editar Informação</h1>
 
-        <div class="row">
-            <div class="col s12">
-                <div class="col s12" style="height: 20px;"></div>
-                <div class="col s4 offset-s4">
-                    <input type="text" id="nome">
-                </div>
-            </div>
-        </div>
-        <div class="botao">
-            <button class="btn waves-effect waves-light" type="submit" name="action">Feito
-                <i class="material-icons right">check</i>
-            </button>
-        </div>
 
-        <h2>Editar Informações</h2>
 
-               <div class="row">
-            <form class="col s12">
-                <div class="row">
-                    <div class="input-field col s6 offset-s3">
-                        <textarea style="height: 100px;" id="textarea1" class="materialize-textarea"
-                            ></textarea>
-                    </div>
-                </div>
-            </form>
-        </div>
+<form method="post" action="editarinformacao.php" >
 
-        <!-- Modal -->
-        <div class="row">
-            <div class="col s12">
-                <button data-target="modal1" class="btn modal-trigger offset-s3 col s6">Escolha os setores</button>
-            </div>
-        </div>
+    <div class="input-group">
+        <input type="hidden" name="id" value="<?php echo $id; ?>">
+    </div>
+    <div class="input-group">
+        <label>Descrição:</label>
+        <input type="text" name="descricao" value="<?php echo $descricao; ?>">
+    </div>
+    <div class="input-group">
+        <label>Setor:</label>
+        <input type="number" name="setor" value="<?php echo $setor;?>">
+    </div>
 
-        <div id="modal1" class="modal">
-            <div class="modal-content">
-                <h2>Lista de setores</h2>
-                <p>
-                    <label>
-                        <input type="checkbox" />
-                        <span>Financeiro</span>
-                    </label>
-                </p>
-                <p>
-                    <label>
-                        <input type="checkbox" />
-                        <span>Produção</span>
-                    </label>
-                </p>
-                <p>
-                    <label>
-                        <input type="checkbox" />
-                        <span>Tesouraria</span>
-                    </label>
-                </p>
-            </div>
-            <div class="modal-footer">
-                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Pronto</a>
-            </div>
-        </div>
+    <div class="input-group">
+        <button class="btn" type="submit" name="alterar"  >Alterar</button>
+    </div>
+</form>
+<?php
+if (isset($_POST['alterar'])) {
+    $descricao = $_POST['descricao'];
+    $setor = $_POST['setor'];
+    $codigo = $_POST['id'];
 
-        <div class="botao">
-            <button class="btn waves-effect waves-light" type="submit" name="action">Feito
-                <i class="material-icons right">check</i>
-            </button>
-        </div>
+    $i = new Informacao();
+    $i->altera($descricao, $setor, $codigo);
 
-        <!-- Rodapé -->
-        <footer>
-            <blockquote>Dore Refrigerantes ©</blockquote>
-        </footer>
+    header('location: ../Interfaces/listasetorinformacoes.php');
+}
+?>
 
-        <script src="./JS/jquery-3.5.1.min.js"></script>
-        <script src="./JS/materialize.min.js"></script>
-        <script>$(document).ready(function () {
-                $('.modal').modal();
-            });</script>
+
+
+
+<!-- Rodapé -->
+<footer>
+    <blockquote>Dore Refrigerantes ©</blockquote>
+</footer>
+
+<!-- Tags JavaScript necessários para o Materialize funcionar -->
+<script src="./JS/jquery-3.5.1.min.js"></script>
+<script src="./JS/materialize.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('.modal').modal();
+    });
+</script>
 </body>
 
 </html>

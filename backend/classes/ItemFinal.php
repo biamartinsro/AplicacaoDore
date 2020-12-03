@@ -61,21 +61,21 @@ INNER JOIN tbespecifico AS F ON C.idespecifico = F.idespecifico";
         }     
     }
     
-    public function consulta($idespecifico){
+    public function consulta($iditemfinal){
         try {
-            $sql  = "SELECT C.idespecifico, C.noespecifico, F.nosubmodulo AS 'Submodulo' 
-FROM tbespecifico AS C
-INNER JOIN tbsubmodulo AS F ON C.idsubmodulo = F.idsubmodulo WHERE idespecifico = ".$idespecifico." ORDER BY noespecifico";
+            $sql  = "SELECT C.iditemfinal as 'IdItemFinal', C.noitemfinal as 'NoItemFinal', F.noespecifico AS 'Especifico' 
+FROM tbitemfinal AS C
+INNER JOIN tbespecifico AS F ON C.idespecifico = F.idespecifico WHERE iditemfinal = ".$iditemfinal." ORDER BY noitemfinal";
             $conn = ConexaoBD::conecta();
             $sql  = $conn->query($sql);
 
             $res = array();  
             while($row = $sql->fetch(PDO::FETCH_OBJ)) {
-               $especifico = new Especifico();               
-                $especifico->setIdespecifico($row->IdEspecifico);
-                $especifico->setNoespecifico($row->NoEspecifico);
-                $especifico->setSubmodulo($row->Submodulo);
-                $res[] = $especifico;
+                $itemfinal = new ItemFinal();
+                $itemfinal->setIdItemFinal($row->IdItemFinal);
+                $itemfinal->setNoItemFinal($row->NoItemFinal);
+                $itemfinal->setEspecifico($row->Especifico);
+                $res[] = $itemfinal;
             }
             return $res;
         } catch (Exception $e) {
@@ -83,18 +83,15 @@ INNER JOIN tbsubmodulo AS F ON C.idsubmodulo = F.idsubmodulo WHERE idespecifico 
         }     
     }
     
-    public function altera($noespecifico,$submodulo, $codigo){
+    public function altera($noitemfinal,$especifico, $codigo){
         try {
-            $sql = "UPDATE Tbespecifico
-                       SET NoEspecifico = ?,
-                       SET IdSubmodulo = ?
-                       
-                     WHERE Idespecifico = ?"; 
+            $sql = "UPDATE tbitemfinal SET noitemfinal=?,idespecifico=?
+where iditemfinal = ?";
             $conn = ConexaoBD::conecta();
 
             $stm = $conn->prepare($sql);
-            $stm->bindParam(1, $noespecifico);
-            $stm->bindParam(2, $idsubmodulo);
+            $stm->bindParam(1, $noitemfinal);
+            $stm->bindParam(2, $especifico);
             $stm->bindParam(3, $codigo);
             $stm->execute();
             return 1; 
@@ -103,15 +100,15 @@ INNER JOIN tbsubmodulo AS F ON C.idsubmodulo = F.idsubmodulo WHERE idespecifico 
         } //try-catch     
     } //método altera
     
-    public function insere($noespecifico, $idsubmodulo){
+    public function insere($noitemfinal, $idespecifico){
       try {
-        $sql = "INSERT INTO Tbespecifico(noespecifico,idsubmodulo)
+        $sql = "INSERT INTO TbItemFinal(noitemfinal,idespecifico)
                 VALUES (?,?);";
         $conn = ConexaoBD::conecta();
 
         $stm  = $conn->prepare($sql);              
-        $stm->bindParam(1, $noespecifico);
-        $stm->bindParam(2, $idsubmodulo);
+        $stm->bindParam(1, $noitemfinal);
+        $stm->bindParam(2, $idespecifico);
 	$stm->execute();
         return 1;
       } catch (Exception $e) {
@@ -121,7 +118,7 @@ INNER JOIN tbsubmodulo AS F ON C.idsubmodulo = F.idsubmodulo WHERE idespecifico 
     
     public function exclui($codigo){
       try {
-	      $sql = "DELETE FROM Tbespecifico WHERE Idespecifico = ?"; 
+	      $sql = "DELETE FROM tbitemfinal WHERE iditemfinal = ?";
 	      $conn = ConexaoBD::conecta();
                                        
 	      $stm = $conn->prepare($sql);

@@ -4,7 +4,7 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-<?php  include('../../backend/classes/ItemFinal.php'); ?>
+<?php  include('../../backend/classes/Setor.php'); ?>
 
 <html>
 <head>
@@ -17,10 +17,10 @@ and open the template in the editor.
 if (isset($_GET['excluir'])) {
     $codigo = $_GET['excluir'];
 
-    $i = new ItemFinal();
-    $resp = $i->exclui($codigo);
+    $s = new Setor();
+    $resp = $s->exclui($codigo);
 
-    header('location: ../Interfaces/listaitemfinal.php?exclusao='.$resp);
+    header('location: ../Interfaces/listasetorinformacoes.php?exclusao='.$resp);
 }
 ?>
 </body>

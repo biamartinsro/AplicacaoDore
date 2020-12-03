@@ -6,7 +6,17 @@ class Submodulo {
     private $idsubmodulo;
     private $nome; 
     private $modulo; 
+    private $idmodulo;
     
+    function getIdmodulo() {
+        return $this->idmodulo;
+    }
+
+    function setIdmodulo($idmodulo) {
+        $this->idmodulo = $idmodulo;
+    }
+
+        
     function getIdsubmodulo() {
         return $this->idsubmodulo;
     }
@@ -31,12 +41,14 @@ class Submodulo {
         $this->modulo = $modulo;
     }
 
-    function __construct($idsubmodulo = null, $nome = null, $modulo = null) {
+    function __construct($idsubmodulo = null, $nome = null, $modulo = null, $idmodulo = null) {
         $this->idsubmodulo = $idsubmodulo;
         $this->nome = $nome;
         $this->modulo = $modulo;
+        $this->idmodulo = $idmodulo;
     }
-  public function lista(){
+
+    public function lista(){
         try {
             $sql  = "SELECT b.idsubmodulo,b.nosubmodulo, nomodulo  FROM tbsubmodulo AS b
 INNER JOIN tbmodulo AS i
@@ -77,16 +89,19 @@ ON b.idmodulo = i.idmodulo ORDER BY nosubmodulo";
         }     
     }
     
-    public function altera($nome, $codigo){
+    public function altera($nome,$modulo, $codigo){
         try {
             $sql = "UPDATE Tbsubmodulo
-                       SET nosubmodulo = ? 
+                       SET nosubmodulo = ?,
+                       idmodulo =?
+                       
                      WHERE idsubmodulo = ?"; 
             $conn = ConexaoBD::conecta();
 
             $stm = $conn->prepare($sql);
             $stm->bindParam(1, $nome);
-            $stm->bindParam(2, $codigo);
+            $stm->bindParam(2, $modulo);
+            $stm->bindParam(3, $codigo);
             $stm->execute();
             return 1; 
 	} catch (Exception $e) {

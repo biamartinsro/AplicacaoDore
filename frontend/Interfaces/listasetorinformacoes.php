@@ -28,7 +28,7 @@
             </ul>
         </div>
 
-        
+
 
         <div class="row">
             <div class="nav-content col s12">
@@ -80,20 +80,20 @@
                     <th colspan="2">Ação</th>
                 </tr>
             </thead>
-            
-            <?php 
+
+            <?php
                 $i = new Informacao();
                 $lista_informacao = $i->lista();
                 foreach($lista_informacao as $lst_informacao) { ?>
                 <tr>
-                    
+
                     <td><?php echo $lst_informacao->getDescricao() ?></td>
                     <td><?php echo $lst_informacao->getSetor()?></td>
                     <td>
                         <a href="../Edição/editarinformacao.php?editar=<?php echo $lst_informacao->getIdinformacoes() ?>" class="edit_btn">Alterar</a>
                     </td>
                     <td>
-                        <a href="../Exclusao/excluiinformacao.php?excluir=<?php echo $lst_informacao->getIdinformacoes() ?>" 
+                        <a href="../Exclusao/excluiinformacao.php?excluir=<?php echo $lst_informacao->getIdinformacoes() ?>"
                            class="del_btn">Remover</a>
                     </td>
                 </tr>
@@ -108,57 +108,58 @@
             if (isset($_GET['exclusao'])) {
                 if ($_GET['exclusao'] == 0){
                     $msg  = "<p name = 'msg' id='msg' class = 'msg_erro'>";
-                    $msg .= "Exclusão não pôde ser realizada.</p>";                  
+                    $msg .= "Exclusão não pôde ser realizada.</p>";
                     echo $msg;
                 }
             }
         ?>         <a class="modal-trigger" href="#modal"></a>
             </li>
-          
-           
-           
+
+
+
         </ul>
     </div>
-    
-    
+
+
     <!-- Setor -->
-    
-    
+
+
     <div id="usuarios" class="col s12">
         <ul class="collection with-header container">
             <li class="collection-header">
-                <a href="../Cadastro/informacao.php"><i class="material-icons right medium">add</i></a>
+                <a href="../Cadastro/setor.php"><i class="material-icons right medium">add</i></a>
                 <h4>Setor</h4>
             </li>
             <li class="collection-item">  <table>
             <thead>
                 <tr>
+                    <th>Código</th>
                     <th>Nome</th>
-                   
+
                     <th colspan="2">Ação</th>
                 </tr>
             </thead>
-            
-            <?php 
+
+            <?php
                 $s = new Setor();
                 $lista_setor = $s->lista();
                 foreach($lista_setor as $lst_setor) { ?>
                 <tr>
-                    
+                    <td><?php echo $lst_setor->getIdSetor(); ?></td>
                     <td><?php echo $lst_setor->getNosetor(); ?></td>
-                   
+
                     <td>
-                        <a href="../Interfaces de Edição/editarinformacao.php?editar=<?php echo $lst_setor->getIdsetor() ?>" class="edit_btn">Alterar</a>
+                        <a href="../Edição/editarsetor.php?editar=<?php echo $lst_setor->getIdsetor() ?>" class="edit_btn">Alterar</a>
                     </td>
                     <td>
-                        <a href="../Exclusao/excluiinformacao.php?excluir=<?php echo $lst_setor->getIdsetor(); ?>" 
+                        <a href="../Exclusao/excluisetor.php?excluir=<?php echo $lst_setor->getIdsetor(); ?>"
                            class="del_btn">Remover</a>
                     </td>
                 </tr>
             <?php } ?>
             <tfoot>
                 <td colspan="4" align="center">
-                    <br> <button class="btn" name="listar" type="button" onclick="location.href='../Cadastro/informacao.php';">Cadastrar Setor</button>
+                    <br> <button class="btn" name="listar" type="button" onclick="location.href='../Cadastro/setor.php';">Cadastrar Setor</button>
                 </td>
             </tfoot>
         </table>
@@ -166,18 +167,18 @@
             if (isset($_GET['exclusao'])) {
                 if ($_GET['exclusao'] == 0){
                     $msg  = "<p name = 'msg' id='msg' class = 'msg_erro'>";
-                    $msg .= "Exclusão não pôde ser realizada.</p>";                  
+                    $msg .= "Exclusão não pôde ser realizada.</p>";
                     echo $msg;
                 }
             }
         ?>         <a class="modal-trigger" href="#modal"></a>
             </li>
-          
-           
-           
+
+
+
         </ul>
     </div>
-    
+
     <div id="modal" class="modal">
         <div class="modal-content">
             <div class="container center">

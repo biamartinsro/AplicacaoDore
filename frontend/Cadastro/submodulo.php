@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="./CSS/materialize.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="./CSS/Submodulo.css">
-    <title>Cadastrar sobmódulos</title>
+    <title>Cadastrar sobmodulos</title>
 </head>
 
 
@@ -45,15 +45,16 @@
         </div>
     </div>
    
-    <h1>Cadastrar Submódulo</h1>
+    <h1>Cadastrar Submodulo</h1>
     <form method="post" action="submodulo.php" >
+
         <div class="input-group">
             <label>Nome:</label>
             <input type="text" name="nome" value="">
         </div>
         <div class="input-group">
             <label>Modulo:</label>
-            <input type="text" name="modulo" value="">
+            <input type="number" name="modulo" value="">
         </div>
         <div class="input-group">
             <button class="btn" type="submit" name="cadastrar" >Cadastrar</button>
@@ -66,6 +67,7 @@
         if (isset($_POST['cadastrar'])) {
             $nome = $_POST['nome'];
             $modulo   = $_POST['modulo'];
+            $codigo = $_POST[ 'id'];
             
             $s = new Submodulo();
             $s->insere($nome, $modulo);

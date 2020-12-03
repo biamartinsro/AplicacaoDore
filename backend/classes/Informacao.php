@@ -69,20 +69,20 @@ INNER JOIN tbsetor AS F ON C.idsetor = F.idsetor";
     
     public function consulta($idinformacoes){
         try {
-            $sql  = "SELECT C.idinformacoes, C.descricao, F.nosetor, G.nome
+            $sql  = "SELECT c.idinformacao as 'IdInformacoes', C.descricao as 'Descricao', F.nosetor as 'NoSetor'
 FROM tbinformacoes AS C
 INNER JOIN tbsetor AS F ON C.idsetor = F.idsetor
-INNER JOIN tbusuario AS G ON C.idusuario = G.idusuario WHERE idInformacoes = ".$idInformacoes." ORDER BY Descricao";
+WHERE c.idinformacao = ".$idinformacoes." ORDER BY Descricao";
             $conn = ConexaoBD::conecta();
             $sql  = $conn->query($sql);
 
             $res = array();  
             while($row = $sql->fetch(PDO::FETCH_OBJ)) {
-              $informacao = new Informacao();
+               $informacao = new Informacao();
                $informacao->setIdinformacoes($row->IdInformacoes);
                $informacao->setDescricao($row->Descricao);
                $informacao->setSetor($row->NoSetor);
-               $informacao->setUsuario($row->Nousuario);
+
                 $res[] = $informacao;
             }
             return $res;
@@ -91,19 +91,21 @@ INNER JOIN tbusuario AS G ON C.idusuario = G.idusuario WHERE idInformacoes = ".$
         }     
     }
     
-    public function altera($descricao,$codigo){
+    public function altera($descricao,$idsetor, $codigo){
         try {
             $sql = "UPDATE TbInformacoes
                        SET Descricao = ?,
+                       IdSetor =?
                      
                      
                        
-                     WHERE IdInformacoes = ?"; 
+                     WHERE IdInformacao = ?";
             $conn = ConexaoBD::conecta();
 
             $stm = $conn->prepare($sql);
             $stm->bindParam(1, $descricao);
-            $stm->bindParam(2, $codigo);
+            $stm->bindParam(2,$idsetor);
+            $stm->bindParam(3, $codigo);
             $stm->execute();
             return 1; 
 	} catch (Exception $e) {
@@ -111,16 +113,16 @@ INNER JOIN tbusuario AS G ON C.idusuario = G.idusuario WHERE idInformacoes = ".$
         } //try-catch     
     } //método altera
     
-    public function insere($descricao, $setor, $usuario){
+    public function insere($descricao, $setor){
       try {
-        $sql = "INSERT INTO TbInformacoes(descricao,idsetor,idusuario))
-                VALUES (?,?,?);";
+        $sql = "INSERT INTO TbInformacoes(descricao,idsetor)
+                VALUES (?,?);";
         $conn = ConexaoBD::conecta();
 
         $stm  = $conn->prepare($sql);              
         $stm->bindParam(1, $descricao);
         $stm->bindParam(2, $setor);
-        $stm->bindParam(3, $usuario);
+
 	$stm->execute();
         return 1;
       } catch (Exception $e) {
@@ -130,7 +132,7 @@ INNER JOIN tbusuario AS G ON C.idusuario = G.idusuario WHERE idInformacoes = ".$
     
     public function exclui($codigo){
       try {
-	      $sql = "DELETE FROM TbInformacoes WHERE IdInformacoes = ?"; 
+	      $sql = "DELETE FROM TbInformacoes WHERE IdInformacao = ?";
 	      $conn = ConexaoBD::conecta();
                                        
 	      $stm = $conn->prepare($sql);
