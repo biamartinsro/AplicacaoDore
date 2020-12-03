@@ -75,9 +75,8 @@
             <thead>
                 <tr>
                     <th>Descrição</th>
-                    <th>Submódulo</th>
-                    <th>Específico</th>
                     <th>Item Final</th>
+                    <th>Solução</th>
                     <th colspan="2">Ação</th>
                 </tr>
             </thead>
@@ -89,9 +88,10 @@
                 <tr>
                     
                     <td><?php echo $lst_problema->getDescricao(); ?></td>
-                    <td><?php echo $lst_problema->getSubmodulo();?></td>
-                    <td><?php echo $lst_problema->getEspecifico()?></td>
+
+
                     <td><?php echo $lst_problema->getItemfinal()?></td>
+                    <td><?php link($lst_problema->getSolucao()) ?></td>
                     <td>
                         <a href="../Edição/editarproblema.php?editar=<?php echo $lst_problema->getIdproblema(); ?>" class="edit_btn">Alterar</a>
                     </td>
