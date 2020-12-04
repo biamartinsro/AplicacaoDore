@@ -74,6 +74,7 @@
             <li class="collection-item">  <table>
             <thead>
                 <tr>
+                    <th>Código</th>
                     <th>Nome</th>
                     <th>Específico</th>
                     <th colspan="2">Ação</th>
@@ -85,7 +86,7 @@
                 $lista_itemfinal = $i->lista();
                 foreach($lista_itemfinal as $lst_item) { ?>
                 <tr>
-                    
+                    <td><?php echo $lst_item->getIdItemFinal(); ?></td>
                     <td><?php echo $lst_item->getNoItemFinal(); ?></td>
                     <td><?php echo $lst_item->getEspecifico() ?></td>
                     <td>

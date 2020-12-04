@@ -119,10 +119,10 @@ INNER JOIN tbitemfinal AS H ON C.iditemfinal = H.iditemfinal";
     
     public function consulta($idproblema){
         try {
-            $sql  = "SELECT C.idproblema, C.descricao, c.solucao as 'Solucao', H.noitemfinal
+            $sql  = "SELECT C.idproblema as 'IdProblema', C.descricao, c.solucao as 'Solucao', H.noitemfinal
 FROM tbproblema AS C
 
-INNER JOIN tbitemfinal AS H ON C.iditemfinal = H.iditemfinal WHERE idProblema = ".$idProblema." ORDER BY Descricao";
+INNER JOIN tbitemfinal AS H ON C.iditemfinal = H.iditemfinal WHERE idProblema = ".$idproblema." ORDER BY Descricao";
             $conn = ConexaoBD::conecta();
             $sql  = $conn->query($sql);
 
@@ -130,9 +130,9 @@ INNER JOIN tbitemfinal AS H ON C.iditemfinal = H.iditemfinal WHERE idProblema = 
             while($row = $sql->fetch(PDO::FETCH_OBJ)) {
               $Problema = new Problema();
                $Problema->setIdproblema($row->IdProblema);
-               $Problema->setDescricao($row->Descricao);
-               $Problema->setEspecifico($row->Solucao);
-               $Problema->setItemfinal($row->ItemFinal);
+               $Problema->setDescricao($row->descricao);
+               $Problema->setSolucao($row->Solucao);
+               $Problema->setItemfinal($row->noitemfinal);
 
                 $res[] = $Problema;
             }
@@ -144,9 +144,7 @@ INNER JOIN tbitemfinal AS H ON C.iditemfinal = H.iditemfinal WHERE idProblema = 
     
     public function altera($descricao,$solucao, $itemfinal, $codigo){
         try {
-            $sql = "UPDATE TbProblema
-                       SET Descricao = ?,solucao = ?, IdItemFinal = ?           
-                     WHERE IdProblema = ?"; 
+            $sql = "UPDATE `tbproblema` SET `descricao`=?,`solucao`=?,`iditemfinal`=? WHERE idproblema = ?";
             $conn = ConexaoBD::conecta();
 
             $stm = $conn->prepare($sql);

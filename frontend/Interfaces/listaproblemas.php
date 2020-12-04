@@ -91,7 +91,7 @@
 
 
                     <td><?php echo $lst_problema->getItemfinal()?></td>
-                    <td><?php link($lst_problema->getSolucao()) ?></td>
+                    <td><?php echo $lst_problema->getSolucao()?></td>
                     <td>
                         <a href="../Edição/editarproblema.php?editar=<?php echo $lst_problema->getIdproblema(); ?>" class="edit_btn">Alterar</a>
                     </td>
