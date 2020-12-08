@@ -24,6 +24,7 @@ if (isset($_GET['editar'])) {
     $p = new Problema();
     $problema = $p->consulta($id);
     foreach($problema as $lst_problema) {
+
         $descricao = $lst_problema->getDescricao();
         $itemfinal = $lst_problema->getItemFinal();
     }
@@ -57,7 +58,7 @@ if (isset($_GET['editar'])) {
     </div>
 </div>
 
-<h1>Editar Específico</h1>
+<h1>Editar Problema</h1>
 
 
 
@@ -87,10 +88,10 @@ if (isset($_POST['alterar'])) {
     $descricao = $_POST['descricao'];
     $itemfinal = $_POST ['itemfinal'];
     $solucao = $_POST['solucao'];
-
+    $codigo = $_POST['id'];
 
     $p = new Problema();
-    $p->altera($descricao, $itemfinal, $solucao);
+    $p->altera($descricao, $itemfinal, $solucao, $codigo);
 
     header('location: ../Interfaces/listaproblemas.php');
 }
