@@ -44,7 +44,9 @@
             </div>
         </div>
     </div>
-   
+
+
+
     <h1>Cadastrar Submodulo</h1>
     <form method="post" action="submodulo.php" >
 
@@ -63,6 +65,7 @@
             </button>
         </div>
     </form>
+
     <?php
         if (isset($_POST['cadastrar'])) {
             $nome = $_POST['nome'];
